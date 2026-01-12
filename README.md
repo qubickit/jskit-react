@@ -11,18 +11,34 @@ bun add @qubic-labs/react @qubic-labs/sdk @tanstack/react-query react react-dom
 ## Quick start
 
 ```tsx
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
 import { createSdk } from "@qubic-labs/sdk";
+import { QubicQueryProvider, SdkProvider, useBalance } from "@qubic-labs/react";
 
 const queryClient = new QueryClient();
 const sdk = createSdk({ baseUrl: "https://rpc.qubic.org" });
 
-// TODO: add providers/hooks in REACT-002+
+function BalanceCard({ identity }: { identity: string }) {
+  const balance = useBalance(identity, { refetchInterval: 10_000 });
+  if (balance.isLoading) return <div>Loading...</div>;
+  if (balance.error) return <div>{balance.error.message}</div>;
+  return <div>Balance: {balance.data?.balance}</div>;
+}
+
+export function App() {
+  return (
+    <SdkProvider sdk={sdk}>
+      <QubicQueryProvider client={queryClient}>
+        <BalanceCard identity="..." />
+      </QubicQueryProvider>
+    </SdkProvider>
+  );
+}
 ```
 
 ## Status
 
-Scaffolded package; hooks/providers coming next.
+Core providers and read hooks are available. More hooks and examples coming next.
 
 ## Local development (monorepo)
 

@@ -40,7 +40,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@qubic-labs/sdk": "file:../jskit-sdk"
+    "@qubic-labs/sdk": "1.2.0"
   },
   "peerDependencies": {
     "@tanstack/react-query": "^5",

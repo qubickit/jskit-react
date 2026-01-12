@@ -1,3 +1,9 @@
+export type { UseBalanceOptions } from "./hooks/use-balance.js";
+export { useBalance } from "./hooks/use-balance.js";
+export type { UseLastProcessedTickOptions } from "./hooks/use-last-processed-tick.js";
+export { useLastProcessedTick } from "./hooks/use-last-processed-tick.js";
+export type { UseTickInfoOptions } from "./hooks/use-tick-info.js";
+export { useTickInfo } from "./hooks/use-tick-info.js";
 export type { QubicQueryProviderProps } from "./providers/query-provider.js";
 export { QubicQueryProvider } from "./providers/query-provider.js";
 export type { SdkProviderProps } from "./providers/sdk-provider.js";

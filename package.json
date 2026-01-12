@@ -1,0 +1,65 @@
+{
+  "name": "@qubic-labs/react",
+  "version": "0.0.0-development",
+  "module": "./dist/index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qubickit/jskit-core.git",
+    "directory": "jskit-react"
+  },
+  "bugs": {
+    "url": "https://github.com/qubickit/jskit-core/issues"
+  },
+  "homepage": "https://github.com/qubickit/jskit-core/tree/main/jskit-react#readme",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "biome check .",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "test": "bun test",
+    "release": "bunx semantic-release",
+    "prepack": "bun run build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.11",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.6",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.1.0",
+    "@tanstack/react-query": "^5.56.2",
+    "@types/bun": "latest",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "semantic-release": "^24.2.9",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@qubic-labs/sdk": "file:../jskit-sdk"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/",
+    "README.md"
+  ]
+}

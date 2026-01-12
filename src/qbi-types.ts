@@ -10,8 +10,13 @@ export type QbiContractSchema = Readonly<{
   procedures?: Readonly<Record<string, Readonly<{ input: unknown }>>>;
 }>;
 
+export type QbiRegistrySchema = Readonly<Record<string, QbiContractSchema>>;
+
 type SchemaFunctions<S extends QbiContractSchema> = NonNullable<S["functions"]>;
 type SchemaProcedures<S extends QbiContractSchema> = NonNullable<S["procedures"]>;
+
+export type QbiFunctionName<S extends QbiContractSchema> = keyof SchemaFunctions<S> & string;
+export type QbiProcedureName<S extends QbiContractSchema> = keyof SchemaProcedures<S> & string;
 
 export type QbiFunctionInput<
   S extends QbiContractSchema,

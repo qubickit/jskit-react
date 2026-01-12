@@ -7,11 +7,23 @@ Use QBI hooks to query contracts and send procedures through the SDK.
 ```tsx
 import { QueryClient } from "@tanstack/react-query";
 import { createSdk, createQbiRegistry } from "@qubic-labs/sdk";
-import { QubicQueryProvider, SdkProvider } from "@qubic-labs/react";
+import { createSdkProvider, QubicQueryProvider } from "@qubic-labs/react";
+
+type QbiSchemas = {
+  QUTIL: {
+    functions: {
+      getFee: { input: void; output: { fee: bigint } };
+    };
+    procedures: {
+      issueAsset: { input: { payload: Uint8Array } };
+    };
+  };
+};
 
 const registry = createQbiRegistry({ files: [] });
 const sdk = createSdk({ qbi: { files: registry.byName ? [] : [] } });
 const client = new QueryClient();
+const { SdkProvider, useContractMutation, useContractQuery } = createSdkProvider<QbiSchemas>();
 
 export function App({ children }: { children: React.ReactNode }) {
   return (
@@ -24,22 +36,9 @@ export function App({ children }: { children: React.ReactNode }) {
 
 ## Query a function
 
-For type safety, define a schema and provide it as a generic parameter.
-
 ```tsx
-import { useContractQuery } from "@qubic-labs/react";
-
-type QutilSchema = {
-  functions: {
-    getFee: { input: void; output: { fee: bigint } };
-  };
-  procedures: {
-    issueAsset: { input: { payload: Uint8Array } };
-  };
-};
-
 export function ContractInfo() {
-  const query = useContractQuery<QutilSchema, "getFee">("QUTIL", "getFee", {
+  const query = useContractQuery("QUTIL", "getFee", {
     inputBytes: new Uint8Array(),
   });
   if (query.isLoading) return <div>Loading...</div>;
@@ -51,10 +50,8 @@ export function ContractInfo() {
 ## Send a procedure
 
 ```tsx
-import { useContractMutation } from "@qubic-labs/react";
-
 export function IssueAsset() {
-  const mutation = useContractMutation<QutilSchema, "issueAsset">("QUTIL");
+  const mutation = useContractMutation("QUTIL");
   return (
     <button
       onClick={() =>

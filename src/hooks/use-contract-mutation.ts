@@ -1,10 +1,13 @@
 import type { SendTransactionResult } from "@qubic-labs/sdk";
-import type { UseMutationResult } from "@tanstack/react-query";
+import type { UseMutationOptions, UseMutationResult } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import type { QbiContractSchema, QbiProcedureInput, QbiProcedureTxInput } from "../qbi-types.js";
-import type { UseContractProcedureOptions } from "./use-contract-procedure.js";
-import { useContractProcedure } from "./use-contract-procedure.js";
+import { useContract } from "./use-contract.js";
 
-export type UseContractMutationOptions<Input = unknown> = UseContractProcedureOptions<Input>;
+export type UseContractMutationOptions<Input = unknown> = Omit<
+  UseMutationOptions<SendTransactionResult, Error, QbiProcedureTxInput<Input>>,
+  "mutationFn"
+>;
 
 type TypedProcedureInput<
   Schema extends QbiContractSchema,
@@ -24,7 +27,11 @@ export function useContractMutation<Input = unknown>(
 ): UseMutationResult<SendTransactionResult, Error, QbiProcedureTxInput<Input>>;
 export function useContractMutation<Input = unknown>(
   nameOrIndex: string | number,
-  options?: UseContractMutationOptions<Input>,
-) {
-  return useContractProcedure(nameOrIndex, options);
+  options: UseContractMutationOptions<Input> = {},
+): UseMutationResult<SendTransactionResult, Error, QbiProcedureTxInput<Input>> {
+  const contract = useContract(nameOrIndex);
+  return useMutation({
+    ...options,
+    mutationFn: (input) => contract.sendProcedure(input),
+  });
 }

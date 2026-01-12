@@ -1,4 +1,7 @@
-import type { TransactionsForIdentityRequest, TransactionsForIdentityResponse } from "@qubic-labs/sdk";
+import type {
+  TransactionsForIdentityRequest,
+  TransactionsForIdentityResponse,
+} from "@qubic-labs/sdk";
 import type { UseInfiniteQueryOptions } from "@tanstack/react-query";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSdk } from "../providers/sdk-provider.js";

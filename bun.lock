@@ -5,7 +5,7 @@
     "": {
       "name": "jskit-react",
       "dependencies": {
-        "@qubic-labs/sdk": "file:../jskit-sdk",
+        "@qubic-labs/sdk": "1.2.0",
       },
       "devDependencies": {
         "@biomejs/biome": "^2.3.11",
@@ -91,7 +91,7 @@
 
     "@qubic-labs/schnorrq": ["@qubic-labs/schnorrq@1.0.2", "", { "dependencies": { "@noble/hashes": "^1.8.0" }, "peerDependencies": { "typescript": "^5" } }, "sha512-5siomdXGgycQAGJXYIaKqS5EvbEKYYf6hfEShGBfaHw2R3hFxLCwZa8eF5EBHGlR4e8oMb1fkJVL6Eb1uZb86g=="],
 
-    "@qubic-labs/sdk": ["@qubic-labs/sdk@file:../jskit-sdk", { "dependencies": { "@qubic-labs/core": "^1.0.0" }, "devDependencies": { "@biomejs/biome": "^2.3.11", "@semantic-release/changelog": "^6.0.3", "@semantic-release/commit-analyzer": "^13.0.1", "@semantic-release/git": "^10.0.1", "@semantic-release/github": "^11.0.6", "@semantic-release/npm": "^12.0.2", "@semantic-release/release-notes-generator": "^14.0.3", "@types/bun": "latest", "conventional-changelog-conventionalcommits": "^9.1.0", "semantic-release": "^24.2.9", "typescript": "^5.0.0" }, "peerDependencies": { "typescript": "^5" }, "bin": { "qubic-vault": "./dist/src/vault-cli.js" } }],
+    "@qubic-labs/sdk": ["@qubic-labs/sdk@1.2.0", "", { "dependencies": { "@qubic-labs/core": "^1.0.0" }, "peerDependencies": { "typescript": "^5" }, "bin": { "qubic-vault": "dist/src/vault-cli.js" } }, "sha512-pugaVD6kpAttyjcWcUppZZqPHw5wHalPrNBBPOBV/RL7Jp45XCmirgUvZ8yQNQnTwEuRevF2Ub0DYN7w6KdEwQ=="],
 
     "@sec-ant/readable-stream": ["@sec-ant/readable-stream@0.4.1", "", {}, "sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg=="],
 
@@ -592,6 +592,8 @@
     "env-ci/execa": ["execa@8.0.1", "", { "dependencies": { "cross-spawn": "^7.0.3", "get-stream": "^8.0.1", "human-signals": "^5.0.0", "is-stream": "^3.0.0", "merge-stream": "^2.0.0", "npm-run-path": "^5.1.0", "onetime": "^6.0.0", "signal-exit": "^4.1.0", "strip-final-newline": "^3.0.0" } }, "sha512-VyhnebXciFV2DESc+p6B+y0LjSm0krU4OgJN44qFAhBY0TJ+1V61tYD2+wHusZ6F9n5K+vl8k0sTy7PEfV4qpg=="],
 
     "execa/get-stream": ["get-stream@6.0.1", "", {}, "sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg=="],
+
+    "fdir/picomatch": ["picomatch@4.0.3", "", {}, "sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q=="],
 
     "import-fresh/resolve-from": ["resolve-from@4.0.0", "", {}, "sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g=="],
 

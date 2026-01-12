@@ -38,7 +38,7 @@ export function App() {
 
 ## Status
 
-Core providers and read hooks are available. More hooks and examples coming next.
+Core providers and read hooks are available, including transaction history. More hooks and examples coming next.
 
 ## Local development (monorepo)
 

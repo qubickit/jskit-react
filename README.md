@@ -44,6 +44,7 @@ export function App() {
 - `docs/setup.md`
 - `docs/hooks.md`
 - `docs/qbi.md`
+- `docs/wallets.md`
 
 ## Examples
 

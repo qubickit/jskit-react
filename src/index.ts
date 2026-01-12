@@ -21,5 +21,25 @@ export type { QubicQueryProviderProps } from "./providers/query-provider.js";
 export { QubicQueryProvider } from "./providers/query-provider.js";
 export type { SdkProviderProps } from "./providers/sdk-provider.js";
 export { createSdkProvider, SdkProvider, useSdk } from "./providers/sdk-provider.js";
+export type {
+  WalletContextValue,
+  WalletProviderProps,
+  WalletState,
+} from "./providers/wallet-provider.js";
+export { useWallet, WalletProvider } from "./providers/wallet-provider.js";
 export { queryKeys } from "./query/keys.js";
+export type { MetaMaskSnapConfig } from "./wallet/metamask-snap.js";
+export { MetaMaskSnapConnector } from "./wallet/metamask-snap.js";
+export type {
+  WalletAccount,
+  WalletConnector,
+  WalletConnectorType,
+  WalletConnectResult,
+  WalletSession,
+  WalletSignTransactionRequest,
+  WalletSignTransactionResult,
+  WalletStatus,
+} from "./wallet/types.js";
+export type { WalletConnectConfig } from "./wallet/walletconnect.js";
+export { WalletConnectConnector } from "./wallet/walletconnect.js";
 export const jskitReactVersion = "0.0.0-development";

@@ -40,7 +40,9 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@qubic-labs/sdk": "1.2.0"
+    "@metamask/providers": "^20.0.0",
+    "@qubic-labs/sdk": "1.2.0",
+    "@walletconnect/sign-client": "^2.19.1"
   },
   "peerDependencies": {
     "@tanstack/react-query": "^5",

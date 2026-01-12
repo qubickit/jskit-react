@@ -1,0 +1,108 @@
+# Wallets
+
+This package ships wallet connectors (MetaMask Snap + WalletConnect) and a provider/hook to manage connection state.
+
+## Setup
+
+```tsx
+import { WalletProvider, MetaMaskSnapConnector, WalletConnectConnector } from "@qubic-labs/react";
+
+const connectors = [
+  new MetaMaskSnapConnector(),
+  new WalletConnectConnector({
+    projectId: "<walletconnect-project-id>",
+    metadata: {
+      name: "Qubic App",
+      description: "Qubic wallet integration",
+      url: "https://example.com",
+      icons: ["https://example.com/icon.png"],
+    },
+  }),
+];
+
+export function App({ children }: { children: React.ReactNode }) {
+  return <WalletProvider connectors={connectors}>{children}</WalletProvider>;
+}
+```
+
+## Connect + approve
+
+```tsx
+import { useWallet } from "@qubic-labs/react";
+
+export function WalletConnectButton() {
+  const wallet = useWallet();
+
+  const connectSnap = () => wallet.connect("metamask-snap");
+  const connectWalletConnect = () => wallet.connect("walletconnect");
+
+  return (
+    <div>
+      <button type="button" onClick={connectSnap}>
+        MetaMask Snap
+      </button>
+      <button type="button" onClick={connectWalletConnect}>
+        WalletConnect
+      </button>
+      {wallet.state.pendingUri && (
+        <div>
+          <p>Scan this QR in your wallet.</p>
+          <code>{wallet.state.pendingUri}</code>
+          <button type="button" onClick={() => wallet.approveWalletConnect()}>
+            I scanned it
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## Sign a transaction
+
+```tsx
+import { useWallet } from "@qubic-labs/react";
+
+export function SignSnapTx({ txBytes, signatureOffset }: { txBytes: Uint8Array; signatureOffset: number }) {
+  const wallet = useWallet();
+  return (
+    <button
+      type="button"
+      onClick={() =>
+        wallet.signTransaction({
+          kind: "snap",
+          txBytes,
+          signatureOffset,
+        })
+      }
+    >
+      Sign with Snap
+    </button>
+  );
+}
+```
+
+```tsx
+import { useWallet } from "@qubic-labs/react";
+
+export function SignWalletConnectTx() {
+  const wallet = useWallet();
+  return (
+    <button
+      type="button"
+      onClick={() =>
+        wallet.signTransaction({
+          kind: "walletconnect",
+          from: "...",
+          to: "...",
+          amount: 1,
+          inputType: 0,
+          payloadBase64: null,
+        })
+      }
+    >
+      Sign with WalletConnect
+    </button>
+  );
+}
+```

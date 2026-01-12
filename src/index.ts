@@ -1,5 +1,10 @@
 export type { UseBalanceOptions } from "./hooks/use-balance.js";
 export { useBalance } from "./hooks/use-balance.js";
+export { useContract } from "./hooks/use-contract.js";
+export type { UseContractProcedureOptions } from "./hooks/use-contract-procedure.js";
+export { useContractProcedure } from "./hooks/use-contract-procedure.js";
+export type { UseContractQueryOptions } from "./hooks/use-contract-query.js";
+export { useContractQuery } from "./hooks/use-contract-query.js";
 export type { UseLastProcessedTickOptions } from "./hooks/use-last-processed-tick.js";
 export { useLastProcessedTick } from "./hooks/use-last-processed-tick.js";
 export type { UseSendOptions } from "./hooks/use-send.js";

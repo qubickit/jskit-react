@@ -38,7 +38,7 @@ export function App() {
 
 ## Status
 
-Core providers, read hooks, and transfer mutations are available. More hooks and examples coming next.
+Core providers, read hooks, transfer mutations, and QBI helpers are available. More hooks and examples coming next.
 
 ## Local development (monorepo)
 

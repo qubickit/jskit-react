@@ -1,5 +1,8 @@
 # @qubic-labs/react
 
+[![CI](https://github.com/qubickit/jskit-react/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/qubickit/jskit-react/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@qubic-labs/react)](https://www.npmjs.com/package/@qubic-labs/react)
+
 React bindings for `@qubic-labs/sdk` built on `@tanstack/react-query`.
 
 ## Install

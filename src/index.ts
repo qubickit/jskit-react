@@ -1,6 +1,8 @@
 export type { UseBalanceOptions } from "./hooks/use-balance.js";
 export { useBalance } from "./hooks/use-balance.js";
 export { useContract } from "./hooks/use-contract.js";
+export type { UseContractMutationOptions } from "./hooks/use-contract-mutation.js";
+export { useContractMutation } from "./hooks/use-contract-mutation.js";
 export type { UseContractProcedureOptions } from "./hooks/use-contract-procedure.js";
 export { useContractProcedure } from "./hooks/use-contract-procedure.js";
 export type { UseContractQueryOptions } from "./hooks/use-contract-query.js";

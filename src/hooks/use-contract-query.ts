@@ -1,6 +1,12 @@
-import type { UseQueryOptions } from "@tanstack/react-query";
+import type { UseQueryOptions, UseQueryResult } from "@tanstack/react-query";
 import { useQuery } from "@tanstack/react-query";
-import type { QbiQueryInput, QbiQueryResult } from "../qbi-types.js";
+import type {
+  QbiContractSchema,
+  QbiFunctionInput,
+  QbiFunctionOutput,
+  QbiQueryInput,
+  QbiQueryResult,
+} from "../qbi-types.js";
 import { queryKeys } from "../query/keys.js";
 import { useContract } from "./use-contract.js";
 
@@ -12,12 +18,27 @@ export type UseContractQueryOptions<Output> = Omit<
     inputKey?: string;
   }>;
 
+export function useContractQuery<
+  Schema extends QbiContractSchema,
+  Name extends keyof NonNullable<Schema["functions"]> & string,
+>(
+  nameOrIndex: string | number,
+  entry: Name,
+  input: QbiQueryInput<QbiFunctionInput<Schema, Name>, QbiFunctionOutput<Schema, Name>>,
+  options?: UseContractQueryOptions<QbiFunctionOutput<Schema, Name>>,
+): UseQueryResult<QbiQueryResult<QbiFunctionOutput<Schema, Name>>, Error>;
+export function useContractQuery<Input = unknown, Output = unknown>(
+  nameOrIndex: string | number,
+  entry: string,
+  input: QbiQueryInput<Input, Output>,
+  options?: UseContractQueryOptions<Output>,
+): UseQueryResult<QbiQueryResult<Output>, Error>;
 export function useContractQuery<Input = unknown, Output = unknown>(
   nameOrIndex: string | number,
   entry: string,
   input: QbiQueryInput<Input, Output>,
   options: UseContractQueryOptions<Output> = {},
-) {
+): UseQueryResult<QbiQueryResult<Output>, Error> {
   const contract = useContract(nameOrIndex);
   const inputKey = options.inputKey ?? defaultInputKey(input);
 

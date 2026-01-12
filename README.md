@@ -36,9 +36,17 @@ export function App() {
 }
 ```
 
-## Status
+## Docs
 
-Core providers, read hooks, transfer mutations, and QBI helpers are available. More hooks and examples coming next.
+- `docs/setup.md`
+- `docs/hooks.md`
+- `docs/qbi.md`
+
+## Examples
+
+- `examples/basic.tsx`
+- `examples/transactions.tsx`
+- `examples/qbi.tsx`
 
 ## Local development (monorepo)
 

@@ -2,7 +2,7 @@ import type {
   TransactionsForIdentityRequest,
   TransactionsForIdentityResponse,
 } from "@qubic-labs/sdk";
-import type { UseInfiniteQueryOptions } from "@tanstack/react-query";
+import type { InfiniteData, UseInfiniteQueryOptions } from "@tanstack/react-query";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSdk } from "../providers/sdk-provider.js";
 import { queryKeys } from "../query/keys.js";
@@ -20,7 +20,7 @@ export type UseTransactionsOptions = Omit<
   UseInfiniteQueryOptions<
     TransactionsForIdentityResponse,
     Error,
-    TransactionsForIdentityResponse,
+    InfiniteData<TransactionsForIdentityResponse>,
     ReturnType<typeof queryKeys.transactions>,
     bigint
   >,

@@ -5,6 +5,41 @@ export type QbiCodec<Input = unknown, Output = unknown> = Readonly<{
   decode(entry: unknown, bytes: Uint8Array): Output;
 }>;
 
+export type QbiContractSchema = Readonly<{
+  functions?: Readonly<Record<string, Readonly<{ input: unknown; output: unknown }>>>;
+  procedures?: Readonly<Record<string, Readonly<{ input: unknown }>>>;
+}>;
+
+type SchemaFunctions<S extends QbiContractSchema> = NonNullable<S["functions"]>;
+type SchemaProcedures<S extends QbiContractSchema> = NonNullable<S["procedures"]>;
+
+export type QbiFunctionInput<
+  S extends QbiContractSchema,
+  Name extends string,
+> = Name extends keyof SchemaFunctions<S>
+  ? SchemaFunctions<S>[Name] extends { input: infer Input }
+    ? Input
+    : unknown
+  : unknown;
+
+export type QbiFunctionOutput<
+  S extends QbiContractSchema,
+  Name extends string,
+> = Name extends keyof SchemaFunctions<S>
+  ? SchemaFunctions<S>[Name] extends { output: infer Output }
+    ? Output
+    : unknown
+  : unknown;
+
+export type QbiProcedureInput<
+  S extends QbiContractSchema,
+  Name extends string,
+> = Name extends keyof SchemaProcedures<S>
+  ? SchemaProcedures<S>[Name] extends { input: infer Input }
+    ? Input
+    : unknown
+  : unknown;
+
 export type QbiQueryInput<Input = unknown, Output = unknown> = Readonly<{
   inputBytes?: Uint8Array;
   inputValue?: Input;

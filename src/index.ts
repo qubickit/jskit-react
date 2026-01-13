@@ -1,3 +1,10 @@
+export type {
+  OpenSeedVaultBrowserInput,
+  OpenSeedVaultInput,
+  SeedVault,
+  VaultExport,
+  VaultStore,
+} from "@qubic-labs/sdk";
 export type { UseBalanceOptions } from "./hooks/use-balance.js";
 export { useBalance } from "./hooks/use-balance.js";
 export { useContract } from "./hooks/use-contract.js";
@@ -28,6 +35,16 @@ export type {
 } from "./providers/wallet-provider.js";
 export { useWallet, WalletProvider } from "./providers/wallet-provider.js";
 export { queryKeys } from "./query/keys.js";
+export type { CreateBrowserVaultInput } from "./vault/browser.js";
+export {
+  createBrowserVault,
+  createLocalStorageVaultStore,
+  createMemoryVaultStore,
+  importBrowserVault,
+  openBrowserVault,
+} from "./vault/browser.js";
+export type { CreateVaultInput } from "./vault/node.js";
+export { createNodeVault, importNodeVault, openNodeVault, vaultExists } from "./vault/node.js";
 export type { MetaMaskSnapConfig } from "./wallet/metamask-snap.js";
 export { MetaMaskSnapConnector } from "./wallet/metamask-snap.js";
 export type {

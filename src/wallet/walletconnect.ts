@@ -9,6 +9,14 @@ import type {
 } from "./types.js";
 import { base64ToBytes } from "./utils.js";
 
+export type WalletConnectClient = Readonly<{
+  connect: SignClient["connect"];
+  request: SignClient["request"];
+  disconnect: SignClient["disconnect"];
+  on: SignClient["on"];
+  session: SignClient["session"];
+}>;
+
 export type WalletConnectConfig = Readonly<{
   projectId: string;
   metadata: Readonly<{
@@ -22,12 +30,13 @@ export type WalletConnectConfig = Readonly<{
   events?: readonly string[];
   storageKey?: string;
   storage?: Storage;
+  signClientFactory?: () => Promise<WalletConnectClient>;
 }>;
 
 export class WalletConnectConnector implements WalletConnector {
   readonly type = "walletconnect" as const;
   private readonly config: WalletConnectConfig;
-  private client: SignClient | null = null;
+  private client: WalletConnectClient | null = null;
   private sessionTopic = "";
 
   constructor(config: WalletConnectConfig) {
@@ -142,15 +151,17 @@ export class WalletConnectConnector implements WalletConnector {
     return this.requestAccounts();
   }
 
-  private async getClient(): Promise<SignClient> {
+  private async getClient(): Promise<WalletConnectClient> {
     if (this.client) return this.client;
-    const client = await SignClient.init({
-      projectId: this.config.projectId,
-      metadata: {
-        ...this.config.metadata,
-        icons: [...this.config.metadata.icons],
-      },
-    });
+    const client = this.config.signClientFactory
+      ? await this.config.signClientFactory()
+      : await SignClient.init({
+          projectId: this.config.projectId,
+          metadata: {
+            ...this.config.metadata,
+            icons: [...this.config.metadata.icons],
+          },
+        });
     client.on("session_delete", () => this.clearSession());
     client.on("session_expire", () => this.clearSession());
     this.client = client;

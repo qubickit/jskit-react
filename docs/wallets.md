@@ -25,6 +25,20 @@ export function App({ children }: { children: React.ReactNode }) {
 }
 ```
 
+## Client-only usage
+
+Connectors rely on browser APIs (window, storage, injected providers). Ensure they are created in client-only code paths.
+
+## Auto-connect and storage
+
+By default, the provider will attempt to restore the last connector using local storage.
+
+```tsx
+<WalletProvider connectors={connectors} autoConnect={false} storageKey="qubic.wallet.connector">
+  {children}
+</WalletProvider>
+```
+
 ## Connect + approve
 
 ```tsx

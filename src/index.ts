@@ -2,9 +2,29 @@ export type {
   OpenSeedVaultBrowserInput,
   OpenSeedVaultInput,
   SeedVault,
+  VaultEntry,
+  VaultEntryEncrypted,
   VaultExport,
+  VaultHeader,
+  VaultKdfParams,
+  VaultSummary,
   VaultStore,
 } from "@qubic-labs/sdk";
+export type {
+  QbiCodec,
+  QbiContractHandleLike,
+  QbiContractSchema,
+  QbiFunctionInput,
+  QbiFunctionName,
+  QbiFunctionOutput,
+  QbiHelpersLike,
+  QbiProcedureInput,
+  QbiProcedureName,
+  QbiProcedureTxInput,
+  QbiQueryInput,
+  QbiQueryResult,
+  QbiRegistrySchema,
+} from "./qbi-types.js";
 export type { UseBalanceOptions } from "./hooks/use-balance.js";
 export { useBalance } from "./hooks/use-balance.js";
 export { useContract } from "./hooks/use-contract.js";
@@ -57,6 +77,8 @@ export type {
   WalletSignTransactionResult,
   WalletStatus,
 } from "./wallet/types.js";
+export type { VaultConnectorConfig } from "./wallet/vault.js";
+export { VaultConnector } from "./wallet/vault.js";
 export type { WalletConnectConfig } from "./wallet/walletconnect.js";
 export { WalletConnectConnector } from "./wallet/walletconnect.js";
 export const jskitReactVersion = "0.0.0-development";

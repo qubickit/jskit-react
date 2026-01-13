@@ -7,24 +7,16 @@ export type {
   VaultExport,
   VaultHeader,
   VaultKdfParams,
-  VaultSummary,
   VaultStore,
+  VaultSummary,
 } from "@qubic-labs/sdk";
-export type {
-  QbiCodec,
-  QbiContractHandleLike,
-  QbiContractSchema,
-  QbiFunctionInput,
-  QbiFunctionName,
-  QbiFunctionOutput,
-  QbiHelpersLike,
-  QbiProcedureInput,
-  QbiProcedureName,
-  QbiProcedureTxInput,
-  QbiQueryInput,
-  QbiQueryResult,
-  QbiRegistrySchema,
-} from "./qbi-types.js";
+export {
+  VaultEntryExistsError,
+  VaultEntryNotFoundError,
+  VaultError,
+  VaultInvalidPassphraseError,
+  VaultNotFoundError,
+} from "@qubic-labs/sdk";
 export type { UseBalanceOptions } from "./hooks/use-balance.js";
 export { useBalance } from "./hooks/use-balance.js";
 export { useContract } from "./hooks/use-contract.js";
@@ -54,6 +46,21 @@ export type {
   WalletState,
 } from "./providers/wallet-provider.js";
 export { useWallet, WalletProvider } from "./providers/wallet-provider.js";
+export type {
+  QbiCodec,
+  QbiContractHandleLike,
+  QbiContractSchema,
+  QbiFunctionInput,
+  QbiFunctionName,
+  QbiFunctionOutput,
+  QbiHelpersLike,
+  QbiProcedureInput,
+  QbiProcedureName,
+  QbiProcedureTxInput,
+  QbiQueryInput,
+  QbiQueryResult,
+  QbiRegistrySchema,
+} from "./qbi-types.js";
 export { queryKeys } from "./query/keys.js";
 export type { CreateBrowserVaultInput } from "./vault/browser.js";
 export {

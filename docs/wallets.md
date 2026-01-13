@@ -18,6 +18,8 @@ const connectors = [
       icons: ["https://example.com/icon.png"],
     },
   }),
+  // Optional: vault connector (Node or browser vault)
+  // new VaultConnector({ vault, defaultRef: "main" }),
 ];
 
 export function App({ children }: { children: React.ReactNode }) {
@@ -120,3 +122,29 @@ export function SignWalletConnectTx() {
   );
 }
 ```
+
+## Sign with a vault connector
+
+```tsx
+import { useWallet } from "@qubic-labs/react";
+
+export function SignVaultTx({ unsignedTxBytes }: { unsignedTxBytes: Uint8Array }) {
+  const wallet = useWallet();
+  return (
+    <button
+      type="button"
+      onClick={() =>
+        wallet.signTransaction({
+          kind: "vault",
+          unsignedTxBytes,
+          vaultRef: "main",
+        })
+      }
+    >
+      Sign with Vault
+    </button>
+  );
+}
+```
+
+If you provide `defaultRef` to `VaultConnector`, `vaultRef` becomes optional in the request.

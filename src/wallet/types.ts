@@ -1,4 +1,4 @@
-export type WalletConnectorType = "metamask-snap" | "walletconnect";
+export type WalletConnectorType = "metamask-snap" | "walletconnect" | "vault";
 
 export type WalletStatus = "idle" | "connecting" | "connected" | "error";
 
@@ -28,6 +28,11 @@ export type WalletSignTransactionRequest =
       inputType?: number;
       payloadBase64?: string | null;
       nonce?: string;
+    }>
+  | Readonly<{
+      kind: "vault";
+      unsignedTxBytes: Uint8Array;
+      vaultRef?: string;
     }>;
 
 export type WalletSignTransactionResult = Readonly<{

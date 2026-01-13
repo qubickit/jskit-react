@@ -5,13 +5,12 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qubickit/jskit-core.git",
-    "directory": "jskit-react"
+    "url": "git+https://github.com/qubickit/jskit-react.git"
   },
   "bugs": {
-    "url": "https://github.com/qubickit/jskit-core/issues"
+    "url": "https://github.com/qubickit/jskit-react/issues"
   },
-  "homepage": "https://github.com/qubickit/jskit-core/tree/main/jskit-react#readme",
+  "homepage": "https://github.com/qubickit/jskit-react#readme",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "check": "biome check .",
